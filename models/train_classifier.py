@@ -20,6 +20,11 @@ nltk.download(['punkt', 'wordnet', 'stopwords','omw-1.4'])
 
 
 def load_data(database_filepath):
+    """
+    Arg: database path to SQL
+    Out: X values, y values and category names
+    
+    """
     engine = create_engine('sqlite:///'+ database_filepath)
     df = pd.read_sql_table('Disasters', engine)
     X = df['message']
@@ -28,6 +33,12 @@ def load_data(database_filepath):
     return X, y, category_names 
 
 def tokenize(text):
+    
+    """
+    Arg: text that to be tokenized
+    Out: list of tokens 
+    
+    """
     url_regex = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
     detected_urls = re.findall(url_regex, text)
     for url in detected_urls:
@@ -45,6 +56,10 @@ def tokenize(text):
 
 
 def build_model():
+    """
+    Return a Machine Learn model that process the text messages
+    
+    """
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -60,6 +75,14 @@ def build_model():
 
 
 def evaluate_model(model, X_test, y_test, category_names):  
+    
+    """
+    Args: model > machine learn model
+    X_test > a sample of X values to be used to predict y values as y_pred
+    y_test > a sample of real y values 
+    category_names > category labels
+    
+    """
     y_pred = model.predict(X_test)   
     
     for i, col in enumerate(y_test):
