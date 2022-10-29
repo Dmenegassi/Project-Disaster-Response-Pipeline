@@ -1,9 +1,7 @@
 import sys
-import sys
 
 from sqlalchemy import create_engine
 import nltk
-nltk.download(['punkt', 'wordnet'])
 import re
 import numpy as np
 import pandas as pd
@@ -18,8 +16,8 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.multioutput import MultiOutputClassifier
 import pickle
 
-nltk.download(['punkt', 'wordnet', 'stopwords'])
-nltk.download('omw-1.4')
+nltk.download(['punkt', 'wordnet', 'stopwords','omw-1.4'])
+
 
 def load_data(database_filepath):
     engine = create_engine('sqlite:///'+ database_filepath)
@@ -61,14 +59,8 @@ def build_model():
     return model
 
 
-def evaluate_model(model, X_test, y_test, category_names):
-    print('X_test = ', type(X_test), X_test.shape)
-    print('y_test = ', type(y_test), y_test.shape)
-    print('category_names = ', type(category_names), category_names.shape)
-    
-    y_pred = model.predict(X_test)
-    print('y_pred = ', type(y_test), y_pred.shape)
-    
+def evaluate_model(model, X_test, y_test, category_names):  
+    y_pred = model.predict(X_test)   
     
     for i, col in enumerate(y_test):
         print(col)
