@@ -65,12 +65,12 @@ def build_model():
         ('tfidf', TfidfTransformer()),
         ('clf', MultiOutputClassifier(RandomForestClassifier()))
     ])
-    # parameters set to this due to reduce the size of pkl file, which were too large (600MB) for uploading to github with my previous parameters.
+
     parameters = {
         "clf__estimator__min_samples_split": [2, 6],
         "clf__estimator__max_depth": [4, 6, 8]}
     
-    model = GridSearchCV(pipeline, param_grid=parameters, n_jobs=4, verbose=2, cv=3)
+    model = GridSearchCV(pipeline, param_grid=parameters)
     return model
 
 
