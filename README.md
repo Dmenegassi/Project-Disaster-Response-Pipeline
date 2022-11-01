@@ -1,24 +1,39 @@
 # Disaster Response Pipeline Project
 
-### Project 
-The objective of the project is to build a model for an API that classifies disaster messages. To implement this model data skills of engeneering and software engineering were necessary. Creating a machine learning pipeline to categorize these events alows  to send the messages to an appropriate disaster relief agency.
+### Project Description
+To analyze disaster data from Appen (formally Figure 8) and build a model for an API that classifies disaster messages. That is an application of how data engeneering and  software engeneering skils can be applyied to solve real world problems with efficiency
 
-### Datasets
-#### Data set containing real messages that were sent during disaster events. This disaster data were provided by Appen (formally Figure 8) 
+## Files and Descriptions
+### app
+- Template
+- go.html : classification result page of web app
+- master.html : Main web page
+- run.py : Flask file to run the web app
 
-- "disaster_categories" provided the 36 categories of classification of the messages
+### data
+- DisasterResponse.db: database saved after ETL process
+- disaster_categories.csv : data
+- disaster_messages.csv : data
+- process_data.py: run the ETL process 
 
-- "disaster_messages" provided the 26216 messages to fit the ML model 
+### models
+- classifier.pkl: saved model
+- train_classifier.py: Machine Lern process
 
-### Libraries Necessary:
-- nlk, sklearn, pandas, numpy, re, sqlalchemy, pickle and sys
+### README.md
 
-### Steps:
+### Python version and Libraries
 
-- process_data.py: implementation of ETL process
-- DisasterResponse.db: database stored at the end of ETL process
-- train_classifier.py: build the Machine Learn Model that classify the messages into categories
-- run.py: initiate the web app
+- Python3
+- Pandas
+- Numpy
+- NLK
+- Scikit
+- SQLalchemy
+- Pickle
+- Flask
+- Plotly
+
 
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
@@ -33,3 +48,7 @@ The objective of the project is to build a model for an API that classifies disa
 3. Run your web app: `python run.py`
 
 4. Click the `PREVIEW` button to open the homepage
+
+### Acknowledgements
+- Udacity for the Data Science Nanodegree Program
+- Figure Eight for providing the data
