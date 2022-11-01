@@ -4,6 +4,11 @@
 To analyze disaster data from Appen (formally Figure 8) and build a model for an API that classifies disaster messages. That is an application of how data engeneering and  software engeneering skils can be applyied to solve real world problems with efficiency
 
 ## Files and Descriptions
+
+- img1: pre visualization from web app
+- img2: pre visualization from web app
+
+
 ### app
 - Template
 - go.html : classification result page of web app
