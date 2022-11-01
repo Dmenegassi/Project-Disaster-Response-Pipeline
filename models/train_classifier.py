@@ -14,6 +14,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
 from sklearn.multioutput import MultiOutputClassifier
+from nltk.corpus import stopwords
 import pickle
 
 nltk.download(['punkt', 'wordnet', 'stopwords','omw-1.4'])
@@ -45,6 +46,8 @@ def tokenize(text):
         text = text.replace(url, "urlplaceholder")
 
     tokens = word_tokenize(text)
+    stop_words = stopwords.words('english')
+    tokens = [tok for tok in tokens if tok not in stop_words]
     lemmatizer = WordNetLemmatizer()
 
     clean_tokens = []
