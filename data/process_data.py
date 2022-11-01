@@ -37,7 +37,9 @@ def clean_data(df):
         
     df.drop('categories', axis=1, inplace=True)   
     # concatenate the original dataframe with the new `categories` dataframe
-    df = pd.concat([df,categories],axis=1)   
+    df = pd.concat([df,categories],axis=1)  
+    #replacing related values that are not binary into binary
+    df[df['related'] == 2] = 1
     # drop duplicates
     df.drop_duplicates(inplace=True)   
 
@@ -48,8 +50,8 @@ def save_data(df, database_filename):
     """
     
     Args:
-        df -> Clean data Pandas DataFrame
-        database_filename -> database file (.db) destination path
+        df -> cleaned dataframe
+        database_filename -> database file
     """   
     from sqlalchemy import create_engine
     engine = create_engine('sqlite:///' + database_filename)
